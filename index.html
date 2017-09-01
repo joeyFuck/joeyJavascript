@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script>
+			parseInt('10');
+parseInt('20');
+parseInt('30');
+		var count = 0;
+var oldParseInt = parseInt; // 保存原函数
+
+window.parseInt = function () {
+    count += 1;
+    return oldParseInt.apply(null, arguments); // 调用原函数
+};
+
+// 测试:
+parseInt('10');
+parseInt('20');
+parseInt('30');
+alert(count);
+
+		</script>
+	</head>
+
+	<body>
+
+	</body>
+
+</html>
