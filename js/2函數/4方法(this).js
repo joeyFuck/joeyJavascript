@@ -1,3 +1,6 @@
+//this指针只在age方法的函数内指向xiaoming，在函数内部定义的函数，this又指向undefined了！
+//（在非strict模式下，它重新指向全局对象window！）
+
 //在一个对象中绑定函数，称为这个对象的方法。
 var xiaoming = {
     name: '小明',
@@ -41,11 +44,15 @@ var xiaoming = {
         var y = new Date().getFullYear();
         return y - this.birth;
     }
-};
+}; 
 
 var fn = xiaoming.age;
 fn(); // Uncaught TypeError: Cannot read property 'birth' of undefined  告訴你出錯了！！
 //这个决定只是让错误及时暴露出来，并没有解决this应该指向的正确位置。
+
+alert(xiaoming.age())//27
+var fn = xiaoming.age;
+alert(fn());//NaN 
 
 //還有種情況  重構下
 'use strict';

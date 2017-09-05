@@ -14,7 +14,8 @@ var xiaoming = {
 
 var res = getAge();
 alert(res);//NaN，window下沒這個birth('use strict';下報錯)
-res = getAge.apply(xiaoming, [])//要指定函数的this指向哪个对象，可以用函数本身的apply方法，它接收两个参数，第一个参数就是需要绑定的this变量，第二个参数是Array，表示函数本身的参数。
+res = getAge.apply(xiaoming, [])//要指定函数的this指向哪个对象，可以用函数本身的apply方法，它接收两个参数，第一个参数就是需要绑定的this变量，
+//第二个参数是Array，表示函数本身的参数。
 alert(res);//27
 
 //另一个与apply()类似的方法是call()，唯一区别是：

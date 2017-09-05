@@ -5,28 +5,14 @@
 		<meta charset="utf-8" />
 		<title></title>
 		<script>
-			parseInt('10');
-parseInt('20');
-parseInt('30');
-		var count = 0;
-var oldParseInt = parseInt; // 保存原函数
-
-window.parseInt = function () {
-    count += 1;
-    return oldParseInt.apply(null, arguments); // 调用原函数
-};
-
-// 测试:
-parseInt('10');
-parseInt('20');
-parseInt('30');
-alert(count);
-
+        var re = /^(\d+)(0*)$/;
+		res = re.exec('102300'); // ['102300', '102300', '']
+		console.log(res)
 		</script>
 	</head>
 
 	<body>
-
+<img src="img/l.png"/>
 	</body>
 
 </html>
