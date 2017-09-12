@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="http://gallery.echartsjs.com/dep/jquery/jquery.min.js"></script>
+		<script src="../js/echarts-2.2.7/build/dist/echarts.js"></script> 
+	</head>
+
+	<body>
+		<div id="mainPie" style="width: 300px;height:200px;background-color: blueviolet;"></div>
+		<script>
+			// 路径配置
+			require.config({
+				paths: {
+					echarts: '../js/echarts-2.2.7/build/dist'
+				}
+			});
+			// 使用
+			require(
+				[
+					'echarts',
+					//'echarts/chart/bar', // 使用柱状图就加载bar模块，按需加载
+					'echarts/chart/pie'
+				],
+				function(ec) { 
+					var myChart = ec.init(document.getElementById('mainPie'));
+					var label1 = {
+						normal: {
+							color: '#75B463',
+							label: {
+								show: true,
+								formatter:"已闭合\n25%",
+								textStyle:{
+									align:"center",
+									color:"#75B463"
+								}
+							},
+							labelLine: {
+								show: true,
+								length:15,
+								lineStyle:{
+									color:"#75B463",
+									type:"dotted"
+								}
+							
+							}
+						},
+						emphasis: {
+							color: '#75B463'
+						}
+					};
+
+					var label2 = {
+						normal: {
+							color: '#E46F5D',
+							label: {
+								show: false
+							},
+							labelLine: {
+								show: false
+							}
+						} 
+					};
+					 
+					var labelBottom1 = {
+						normal: {
+							color: 'rgba(0,0,0,0)',
+							label: {
+								show: false,
+								position: 'center'
+							},
+							labelLine: {
+								show: false
+							}
+						},
+						emphasis: {
+							color: 'rgba(0,0,0,0)'
+						}
+					};
+					var labelBottom2 = {
+						normal: {
+							color: 'rgba(0,0,0,0)',
+							label: {
+								show: false,
+								position: 'center'
+							},
+							labelLine: {
+								show: false
+							}
+						},
+						emphasis: {
+							color: 'rgba(0,0,0,0)'
+						}
+					};
+					var option = {
+						tooltip: {
+							trigger: 'item',
+							formatter: "{a} <br/>{b} : {c} ({d}%)"
+						},
+						series: [{
+								type: 'pie',
+								radius: ['25%', '70%'],
+								"startAngle": 180,
+								x: '0%', // for funnel
+								z:2,
+								// itemStyle : labelFromatter,
+								tooltip:{
+									show:false
+//									showContent:false,
+//									formatter:"{a}|{a0}",
+//									backgroundColor:"rgba(0,0,10,0.7)"
+								},
+								data: [
+									{ name: '已闭合', value: 12.5, itemStyle: label1 },
+									{ name: '', value: 87.5, itemStyle: labelBottom1 }
+								]
+							},
+							{
+								type: 'pie',
+								//center : ['10%', '30%'],
+								radius: ['25%', '70%'],
+								"startAngle": 0,
+								x: '0%', // for funnel
+								z:1,
+								tooltip:{
+									show:false
+								},
+								//itemStyle : labelFromatter,
+								data: [
+									{ name: '', value: 62.5, itemStyle: labelBottom2 },
+									{ name: '', value: 37.5, itemStyle: label2 }
+								]
+							}
+						]
+					};
+					// 为echarts对象加载数据 
+				    var value = 25,
+			        value_ = (100 - value) * 180 / 360,
+			        value__ = (value) * 180 / 360; 
+//				    option.tooltip.formatter = "已闭合\n" + value + "%";
+//				    option.series[0].data[0].name = "已闭合" + value + "%";
+					option.series[0].data[0].itemStyle.normal.label.formatter = "已闭合\n" + value + "%";
+					
+				    option.series[1].data[1].value = value_;
+				    option.series[1].data[0].value = 100 - value_;
+				
+				    option.series[0].data[0].value = value__;
+				    option.series[0].data[1].value = 100 - value__;
+					
+					myChart.setOption(option);
+				}
+			);
+			 
+		</script>
+	</body>
+
+</html>
