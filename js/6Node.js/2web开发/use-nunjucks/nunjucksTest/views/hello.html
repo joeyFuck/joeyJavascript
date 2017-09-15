@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello {{ name }}</title>
+</head>
+<body>
+    <h3>Fruits List</h3>
+    {% for f in fruits %}
+    <p>{{ f }}</p>
+    {% endfor %}
+     <!-- 对count变量使用hex过滤器规则 -->
+    <p>Total: {{ count|hex }}</p>
+</body>
+</html>

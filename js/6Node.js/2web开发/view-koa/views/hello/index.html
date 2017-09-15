@@ -1,0 +1,5 @@
+{% extends 'hello/base.html' %}
+ <!--这里的路径也是相对于nunjucks设置的views的路径，而非html相对的路径-->
+{% block main %}  
+	<h3>Hello {{ name }}</h3> 
+{% endblock %}
