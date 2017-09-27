@@ -21,7 +21,7 @@ function addMapping(router, mapping) {
 }
 
 function addControllers(router,dir) {
-    var files = fs.readdirSync(__dirname + '/'+ dir);
+    var files = fs.readdirSync(__dirname + '/'+ dir);//获取controllers下所有js文件，以便addMapping里进行路由注册
     var js_files = files.filter((f) => {
         return f.endsWith('.js');
     });
