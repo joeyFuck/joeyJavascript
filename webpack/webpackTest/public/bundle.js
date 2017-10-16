@@ -67,20 +67,11 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(1);
-(function webpackMissingModule() { throw new Error("Cannot find module \"-\""); }());
-(function webpackMissingModule() { throw new Error("Cannot find module \"v\""); }());
-
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-const greeter = __webpack_require__(2);
+const greeter = __webpack_require__(1);
 document.querySelector("#root").appendChild(greeter());
 
 /***/ }),
-/* 2 */
+/* 1 */
 /***/ (function(module, exports) {
 
 // Greeter.js
